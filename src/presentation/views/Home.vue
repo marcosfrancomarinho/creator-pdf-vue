@@ -1,6 +1,4 @@
 <script setup>
-import Header from '../components/Header.vue';
-import Footer from '../components/Footer.vue';
 import { PlusIcon } from '@heroicons/vue/16/solid';
 </script>
 

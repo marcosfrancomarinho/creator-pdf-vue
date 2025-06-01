@@ -6,7 +6,7 @@ const errorHandler = ref(null);
 const show = ref(false)
 const { creatorPdfController } = Container.dependencies()
 
-/** @param e {SubmitEvent} */
+/** @param { SubmitEvent } e */
 const handleSubmit = async (e) => {
     try {
         e.preventDefault();
