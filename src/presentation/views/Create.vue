@@ -1,9 +1,10 @@
 <script setup>
 import { ref, inject } from 'vue';
 import Alert from '../components/Alert.vue';
+import { PDFKey } from '../../shared/container/InjectionKeys.js';
 const errorHandler = ref(null);
 const show = ref(false)
-const PDF = inject('PDF')
+const PDF = inject(PDFKey)
 
 /** @param { SubmitEvent } e */
 const handleSubmit = async (e) => {
