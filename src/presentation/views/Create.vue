@@ -1,10 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-import { Container } from '../../shared/container/Container.js';
+import { ref, inject } from 'vue';
 import Alert from '../components/Alert.vue';
 const errorHandler = ref(null);
 const show = ref(false)
-const { creatorPdfController } = Container.dependencies()
+const PDF = inject('PDF')
 
 /** @param { SubmitEvent } e */
 const handleSubmit = async (e) => {
@@ -12,7 +11,7 @@ const handleSubmit = async (e) => {
         e.preventDefault();
         show.value = false
         const { title, content } = Object.fromEntries(new FormData(e.target))
-        await creatorPdfController.save({ title, content })
+        await PDF.save({ title, content })
     } catch (error) {
         errorHandler.value = error.message
         show.value = true
