@@ -47,7 +47,6 @@ export default class Document {
     <style>
       body {
         font-family: Arial, sans-serif;
-        padding: 15px;
         background: white;
       }
         
@@ -67,6 +66,7 @@ export default class Document {
         overflow-wrap: break-word;
         word-break: break-word;
         margin-top: 10px;
+        margin-bottom: 10px;
         text-align:justify;
       }
     </style>
