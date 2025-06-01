@@ -1,12 +1,10 @@
 <script setup>
-import { inject, ref } from 'vue'
-import Alert from '../components/Alert.vue'
-import Footer from '../components/Footer.vue'
-import Header from '../components/Header.vue'
-import { DocumentRequestDTO } from '../../application/DTOs/DocumentRequestDTO.js';
+import { ref } from 'vue';
+import { Container } from '../../shared/container/Container.js';
+import Alert from '../components/Alert.vue';
 const errorHandler = ref(null);
 const show = ref(false)
-const creatorPdf = inject('creatorPdf')
+const { creatorPdfController } = Container.dependencies()
 
 /** @param e {SubmitEvent} */
 const handleSubmit = async (e) => {
@@ -14,8 +12,7 @@ const handleSubmit = async (e) => {
         e.preventDefault();
         show.value = false
         const { title, content } = Object.fromEntries(new FormData(e.target))
-        const input = new DocumentRequestDTO(title, content)
-        await creatorPdf.save(input)
+        await creatorPdfController.save({ title, content })
     } catch (error) {
         errorHandler.value = error.message
         show.value = true
@@ -25,8 +22,6 @@ const handleSubmit = async (e) => {
 </script>
 
 <template>
-    <Header />
-
     <main class="grow px-6 py-10 flex flex-col items-center bg-gray-50 text-gray-800">
         <h2 class="text-3xl font-extrabold text-cyan-900 tracking-tight text-center mb-8">
             Crie e baixe seu próprio PDF
@@ -55,5 +50,4 @@ const handleSubmit = async (e) => {
             </button>
         </form>
     </main>
-    <Footer />
 </template>

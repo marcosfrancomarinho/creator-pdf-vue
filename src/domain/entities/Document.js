@@ -39,15 +39,43 @@ export default class Document {
 
   /**@return{string} */
   getHtmlDataToSave() {
-    return ` <style>
-      body { font-family: Arial, sans-serif; padding: 40px; background: white; }
-      h1 { color: #0055aa; font-size: 24px; border-bottom: 2px solid #0055aa; margin-bottom: 20px; }
-      p { font-size: 16px; line-height: 1.6; }
-      .content { margin-top: 10px; }
-    </style>
+    return `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        background: white;
+      }
+        
+      h1 {
+        color: #0055aa;
+        font-size: 24px;
+        border-bottom: 1px solid #0055aa;
+        margin-bottom: 20px;
+        padding: 10px;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
 
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        margin-top: 10px;
+        text-align:justify;
+      }
+    </style>
+  </head>
+  <body>
     <h1>${this.#title}</h1>
-    <div class="content">${this.#content}</div>
-  `;
+    <p>${this.#content}</p>
+  </body>
+</html>
+`;
   }
 }
