@@ -47,7 +47,7 @@ export default class Document {
     <style>
       body {
         font-family: Arial, sans-serif;
-        padding: 10px;
+        padding: 15px;
         background: white;
       }
         
